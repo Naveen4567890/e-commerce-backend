@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const userRoutes = require('./routes/authRoutes.js');
 const productRoutes = require('./routes/productRoutes');
+const cartRoutes = require('./routes/cartRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ app.use('/uploads', express.static(uploadDir));
 // Routes
 app.use('/api/auth', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce', {
