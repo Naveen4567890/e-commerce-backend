@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
   try {
     const { name, email, password, phone, address, role } = req.body;
 
-    if (role && role.toLowerCase() === 'admin') {
+    if (!role && !role.toLowerCase() === 'admin') {
       return res.status(403).json({ message: 'You cannot register as admin' });
     }
 
